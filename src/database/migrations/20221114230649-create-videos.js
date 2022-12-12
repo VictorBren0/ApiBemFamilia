@@ -14,9 +14,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      descricao: {
+      autor: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
+      /*descricao: {
+        type: Sequelize.STRING,
+      },*/
       localizacao: {
         type: Sequelize.STRING,
         allowNull: false,

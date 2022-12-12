@@ -68,7 +68,6 @@ module.exports = {
       .shape({
         nome: Yup.string().max(70),
         senha: Yup.string().min(8),
-        senha_confirm: Yup.string().required().min(8),
       })
       .noUnknown()
 
@@ -77,9 +76,6 @@ module.exports = {
 
       if (!usuario) {
         return res.status(400).json({ error: 'Usuário não encontrado' })
-      }
-      if (senha !== senha_confirm) {
-        return res.status(409).json({ error: 'As senhas não conhecidem!' })
       }
       const validFields = await schema.validate(req.body, {
         abortEarly: false,

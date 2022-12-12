@@ -31,7 +31,7 @@ module.exports = {
 
   async store(req, res) {
     const { categoria_id } = req.params
-    const { titulo, descricao, localizacao, url } = req.body
+    const { titulo, autor, descricao, localizacao, url } = req.body
 
     const categoria = await Categoria.findByPk(categoria_id)
 
@@ -40,7 +40,7 @@ module.exports = {
     }
     //PROCURA E SE NAO EXISTIR ELE VAI CRIAR
     const [podcast] = await Podcast.findOrCreate({
-      where: { titulo, descricao, localizacao, url },
+      where: { titulo, autor, descricao, localizacao, url },
     })
 
     await categoria.addPodcast(podcast)
@@ -73,7 +73,7 @@ module.exports = {
   async update(req, res) {
     const { id } = req.params
     const { categoria_id } = req.params
-    const { titulo, descricao, localizacao, url, ativo } = req.body
+    const { titulo, autor, descricao, localizacao, url, ativo } = req.body
 
     const categoria = await Categoria.findByPk(categoria_id)
     if (!categoria) {
@@ -88,6 +88,7 @@ module.exports = {
     await Podcast.update(
       {
         titulo: titulo,
+        autor: autor,
         descricao: descricao,
         localizacao: localizacao,
         url: url,

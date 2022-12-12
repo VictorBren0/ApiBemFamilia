@@ -5,6 +5,7 @@ class Podcast extends Model {
     super.init(
       {
         titulo: DataTypes.STRING,
+        autor: DataTypes.STRING,
         descricao: DataTypes.STRING,
         localizacao: DataTypes.STRING,
         url: DataTypes.STRING,
