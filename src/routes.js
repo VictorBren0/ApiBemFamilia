@@ -7,6 +7,9 @@ const FavoritoController = require('./controllers/FavoritoController')
 const AuthController = require('./controllers/AuthController')
 const AuthMiddleware = require('./middlewares/AuthMiddleware')
 const PodcastController = require('./controllers/PodcastController')
+const ServicoController = require('./controllers/ServicoController')
+const RegiaoController = require('./controllers/RegiaoController')
+const ClinicaController = require('./controllers/ClinicaController')
 
 const routes = express.Router()
 
@@ -30,7 +33,7 @@ routes.delete('/categorias/:id', CategoriaController.delete)
 routes.put('/categorias/:id', CategoriaController.update)
 
 //VIDEOS
-routes.get('/videos/:id', VideoController.index)
+routes.get('/servicos/:id', VideoController.index)
 routes.get('/videos', VideoController.list)
 routes.post('/categorias/:categoria_id/videos', VideoController.store)
 routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
@@ -50,5 +53,25 @@ routes.delete('/favoritos/:video_id', FavoritoController.delete)
 
 //AVALIAÇÃO
 routes.post('/avaliacoes/:video_id', AvaliacaoController.store)
+
+//CLINICAS
+routes.get('/clinicas/:clinica_id', ClinicaController.index)
+routes.get('/clinicas', ClinicaController.list)
+routes.post('/clinicas', ClinicaController.store)
+routes.delete('/clinicas/:id', ClinicaController.delete)
+routes.put('/clinicas/:id', ClinicaController.update)
+
+//SERVIÇO
+routes.get('/servicos/:id', ServicoController.index)
+routes.get('/servicos', ServicoController.list)
+routes.post('/servicos/:clinica_id/servicos', ServicoController.store)
+routes.delete('/servicos/:clinica_id/servicos', ServicoController.delete)
+routes.put('/servicos/:clinica_id/servicos/:id', ServicoController.update)
+
+//REGIAO
+routes.get('/regioes', RegiaoController.list)
+routes.get('/regioes/:id', RegiaoController.index)
+routes.post('/regioes/:servico_id', RegiaoController.store)
+routes.delete('/regioes/:servico_id', RegiaoController.delete)
 
 module.exports = routes

@@ -1,5 +1,4 @@
 const Categoria = require('../models/Categoria')
-const { list } = require('./VideoController')
 
 module.exports = {
   async index(req, res) {
