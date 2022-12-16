@@ -10,7 +10,7 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       }, 
-      servicos_id: {
+      servico_id: {
         type: Sequelize.INTEGER ,
         allowNull: false,
         references: {model: 'servicos', key: 'id'},

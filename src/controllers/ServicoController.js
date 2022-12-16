@@ -38,11 +38,11 @@ module.exports = {
       return res.status(400).json({ error: 'Clinica não encontrada' })
     }
     //PROCURA E SE NAO EXISTIR ELE VAI CRIAR
-    const [servico] = await Servico.findOrCreate({
+    const [ servico ] = await Servico.findOrCreate({
       where: { nome, descricao },
     })
 
-    await clinica.addClinica(servico)
+    await clinica.addServico(servico)
 
     return res.json(servico)
   },

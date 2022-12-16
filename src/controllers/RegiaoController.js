@@ -9,7 +9,6 @@ module.exports = {
         {
           attributes: [],
           association: 'servicos',
-          where: { id },
         },
       ],
       limit: 20,
@@ -32,7 +31,6 @@ module.exports = {
         {
           attributes: [],
           association: 'servicos',
-          where: { id },
         },
       ],
       limit: 20,
