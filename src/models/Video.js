@@ -6,6 +6,7 @@ class Video extends Model {
       {
         titulo: DataTypes.STRING,
         descricao: DataTypes.STRING,
+        nome: DataTypes.STRING,
         localizacao: DataTypes.STRING,
         url: DataTypes.STRING,
         ativo: DataTypes.BOOLEAN,
