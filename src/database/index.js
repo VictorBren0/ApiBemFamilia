@@ -11,6 +11,7 @@ const Podcast = require('../models/Podcast');
 const Clinica = require("../models/Clinica");
 const Regiao = require("../models/Regiao");
 const Servico = require("../models/Servico");
+const Attachment = require("../models/Attachment");
 
 const connection = new Sequelize(dbConfig)
 
@@ -22,6 +23,7 @@ Podcast.init(connection)
 Clinica.init(connection)
 Regiao.init(connection)
 Servico.init(connection)
+Attachment.init(connection)
 
 Usuario.associate(connection.models)
 Categoria.associate(connection.models)

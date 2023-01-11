@@ -1,4 +1,6 @@
 const express = require('express')
+const multer = require('multer')
+const multerConfig = require('./config/multer')
 const AvaliacaoController = require('./controllers/AvaliacaoController')
 const UsuarioController = require('./controllers/UsuarioController')
 const CategoriaController = require('./controllers/CategoriaController')
@@ -10,8 +12,11 @@ const PodcastController = require('./controllers/PodcastController')
 const ServicoController = require('./controllers/ServicoController')
 const RegiaoController = require('./controllers/RegiaoController')
 const ClinicaController = require('./controllers/ClinicaController')
-
+const AttachmentController = require('./controllers/AttachmentController')
+const upload = multer(multerConfig)
 const routes = express.Router()
+
+
 
 //AUTENTICAR
 routes.post('/auth', AuthController.login)
@@ -73,5 +78,8 @@ routes.get('/regioes', RegiaoController.list)
 routes.get('/regioes/:id', RegiaoController.index)
 routes.post('/regioes/:servico_id', RegiaoController.store)
 routes.delete('/regioes/:servico_id', RegiaoController.delete)
+
+//UPLOAD
+routes.post('/attachments', upload.single('file'), AttachmentController.create)
 
 module.exports = routes
