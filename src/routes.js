@@ -41,7 +41,7 @@ routes.get('/videos/:id', VideoController.index)
 routes.get('/videos', VideoController.list)
 routes.post('/categorias/:categoria_id/videos',  upload.single('file'), VideoController.store)
 routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
-routes.put('/categorias/:categoria_id/videos/:id', VideoController.update)
+routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoController.update)
 
 //PODCASTS
 routes.get('/podcasts/:id', PodcastController.index)
