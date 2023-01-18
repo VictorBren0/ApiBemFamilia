@@ -12,7 +12,6 @@ const PodcastController = require('./controllers/PodcastController')
 const ServicoController = require('./controllers/ServicoController')
 const RegiaoController = require('./controllers/RegiaoController')
 const ClinicaController = require('./controllers/ClinicaController')
-const AttachmentController = require('./controllers/AttachmentController')
 const upload = multer(multerConfig)
 const routes = express.Router()
 
@@ -38,9 +37,9 @@ routes.delete('/categorias/:id', CategoriaController.delete)
 routes.put('/categorias/:id', CategoriaController.update)
 
 //VIDEOS
-routes.get('/servicos/:id', VideoController.index)
+routes.get('/videos/:id', VideoController.index)
 routes.get('/videos', VideoController.list)
-routes.post('/categorias/:categoria_id/videos', VideoController.store)
+routes.post('/categorias/:categoria_id/videos',  upload.single('file'), VideoController.store)
 routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
 routes.put('/categorias/:categoria_id/videos/:id', VideoController.update)
 
@@ -80,6 +79,5 @@ routes.post('/regioes/:servico_id', RegiaoController.store)
 routes.delete('/regioes/:servico_id', RegiaoController.delete)
 
 //UPLOAD
-routes.post('/attachments', upload.single('file'), AttachmentController.create)
 
 module.exports = routes

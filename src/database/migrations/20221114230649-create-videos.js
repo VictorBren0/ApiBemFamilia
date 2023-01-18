@@ -15,6 +15,14 @@ module.exports = {
         allowNull: false,
       },
       nome: {
+        type: Sequelize.STRING, //letra
+        allowNull: false,
+      },
+      file: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      autor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -25,7 +33,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      url: {
+      link: {
         type: Sequelize.STRING,
         allowNull: false,
       },

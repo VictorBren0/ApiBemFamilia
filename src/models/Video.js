@@ -6,10 +6,18 @@ class Video extends Model {
       {
         titulo: DataTypes.STRING,
         descricao: DataTypes.STRING,
-        nome: DataTypes.STRING,
+        autor: DataTypes.STRING,
         localizacao: DataTypes.STRING,
-        url: DataTypes.STRING,
+        link: DataTypes.STRING,
+        nome: DataTypes.STRING,
+        file: DataTypes.STRING,
         ativo: DataTypes.BOOLEAN,
+        url: {
+          type: DataTypes.VIRTUAL,
+          get() {
+            return `http://localhost:3000/videos/${this.file}`
+          }
+        },
         avaliacaoAvg: {
           type: DataTypes.VIRTUAL,
           get() {

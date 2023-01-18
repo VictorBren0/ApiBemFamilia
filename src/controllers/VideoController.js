@@ -34,7 +34,8 @@ module.exports = {
 
   async store(req, res) {
     const { categoria_id } = req.params
-    const { titulo, nome, descricao, localizacao, url } = req.body
+    const { titulo, autor, descricao, localizacao, link } = req.body
+    const { originalname, filename } = req.file
 
     const categoria = await Categoria.findByPk(categoria_id)
 
@@ -43,7 +44,7 @@ module.exports = {
     }
     //PROCURA E SE NAO EXISTIR ELE VAI CRIAR
     const [video] = await Video.findOrCreate({
-      where: { titulo, nome, descricao, localizacao, url },
+      where: { titulo, autor, descricao, localizacao, link, nome: originalname, file: filename},
     })
 
     await categoria.addVideo(video)
@@ -77,6 +78,7 @@ module.exports = {
     const { id } = req.params
     const { categoria_id } = req.params
     const { titulo, nome, descricao, localizacao, url, ativo } = req.body
+    const { originalname, filename } = req.file
 
     const categoria = await Categoria.findByPk(categoria_id)
     if (!categoria) {
@@ -96,6 +98,8 @@ module.exports = {
         localizacao: localizacao,
         url: url,
         ativo: ativo,
+        nome: originalname, 
+        file: filename
       },
       { where: { id: id } }
     )
