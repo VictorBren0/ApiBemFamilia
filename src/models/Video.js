@@ -15,7 +15,7 @@ class Video extends Model {
         url: {
           type: DataTypes.VIRTUAL,
           get() {
-            return `http://localhost:3000/videos/${this.file}`
+            return `http://144.22.215.111/videos/${this.file}`
           }
         },
         avaliacaoAvg: {
