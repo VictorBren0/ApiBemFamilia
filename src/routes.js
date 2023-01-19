@@ -21,14 +21,6 @@ const routes = express.Router()
 routes.post('/auth', AuthController.login)
 routes.post('/cadastro', UsuarioController.store)
 
-routes.use(AuthMiddleware)
-
-//USUARIO
-routes.get('/usuarios', UsuarioController.index)
-routes.get('/usuarios/:id', UsuarioController.show)
-routes.put('/usuarios', UsuarioController.update)
-//routes.post('/logout', AuthController.logout)//
-
 //CATEGORIAS
 routes.get('/categorias', CategoriaController.list)
 routes.get('/categorias/:categoria_id', CategoriaController.index)
@@ -42,6 +34,14 @@ routes.get('/videos', VideoController.list)
 routes.post('/categorias/:categoria_id/videos',  upload.single('file'), VideoController.store)
 routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
 routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoController.update)
+
+
+routes.use(AuthMiddleware)
+
+//USUARIO
+routes.get('/usuarios', UsuarioController.index)
+routes.get('/usuarios/:id', UsuarioController.show)
+routes.put('/usuarios', UsuarioController.update)
 
 //PODCASTS
 routes.get('/podcasts/:id', PodcastController.index)
