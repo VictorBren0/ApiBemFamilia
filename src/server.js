@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 
 app.use(
-    '/attachments',
+    '/uploads',
      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
     )
 
