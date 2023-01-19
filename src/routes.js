@@ -36,7 +36,8 @@ routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
 routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoController.update)
 
 
-routes.use(AuthMiddleware)
+
+//routes.use(AuthMiddleware)
 
 //USUARIO
 routes.get('/usuarios', UsuarioController.index)
