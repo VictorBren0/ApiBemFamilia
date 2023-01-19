@@ -21,7 +21,7 @@ module.exports = {
     const { page = 1 } = req.query
 
     const videos = await Video.findAll({
-      attributes: ['avaliacaoAvg', 'id', 'titulo', 'ativo'],
+      attributes: ['avaliacaoAvg', 'id', 'titulo', 'ativo', 'autor', 'descricao', 'localizacao', 'link'],
       limit: 20,
       offset: (page - 1) * 20,
       include: {
