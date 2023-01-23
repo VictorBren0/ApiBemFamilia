@@ -21,7 +21,6 @@ module.exports = {
     const categorias = await Categoria.findAll({
       include: {
         association: 'videos',
-        attributes: ['id', 'titulo', 'url', 'ativo'],
       },
       limit: 20,
       offset: (page - 1) * 20,
