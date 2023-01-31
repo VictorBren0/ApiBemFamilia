@@ -32,7 +32,6 @@ Podcast.associate(connection.models)
 Clinica.associate(connection.models)
 Regiao.associate(connection.models)
 Servico.associate(connection.models)
-Avaliacao.associate(connection.models)
 
 
 module.exports = connection
