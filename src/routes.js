@@ -21,18 +21,32 @@ const routes = express.Router()
 routes.post('/auth', AuthController.login)
 routes.post('/cadastro', UsuarioController.store)
 
-
-
 //CATEGORIAS
 routes.get('/categorias', CategoriaController.list)
 routes.get('/categorias/:categoria_id', CategoriaController.index)
+
+//VIDEOS
+routes.get('/videos/:id', VideoController.index)
+routes.get('/videos', VideoController.list)
+
+//USUARIO
+routes.get('/usuarios', UsuarioController.index)
+routes.get('/usuarios/:id', UsuarioController.show)
+
+//FAVORITOS
+routes.get('/favoritos', FavoritoController.list)
+
+routes.use(AuthMiddleware)
+
+
+
+//CATEGORIAS
 routes.post('/categorias', CategoriaController.store)
 routes.delete('/categorias/:id', CategoriaController.delete)
 routes.put('/categorias/:id', CategoriaController.update)
 
 //VIDEOS
-routes.get('/videos/:id', VideoController.index)
-routes.get('/videos', VideoController.list)
+
 routes.post('/categorias/:categoria_id/videos',  upload.single('file'), VideoController.store)
 routes.delete('/categorias/:categoria_id/videos', VideoController.delete)
 routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoController.update)
@@ -42,8 +56,6 @@ routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoC
 
 
 //USUARIO
-routes.get('/usuarios', UsuarioController.index)
-routes.get('/usuarios/:id', UsuarioController.show)
 routes.put('/usuarios', UsuarioController.update)
 
 //PODCASTS
@@ -54,7 +66,6 @@ routes.delete('/categorias/:categoria_id/podcasts', PodcastController.delete)
 routes.put('/categorias/:categoria_id/podcasts/:id', PodcastController.update)
 
 //FAVORITOS
-routes.get('/favoritos', FavoritoController.list)
 routes.post('/favoritos/:video_id', FavoritoController.store)
 routes.delete('/favoritos/:video_id', FavoritoController.delete)
 
@@ -80,7 +91,6 @@ routes.get('/regioes', RegiaoController.list)
 routes.get('/regioes/:id', RegiaoController.index)
 routes.post('/regioes/:servico_id', RegiaoController.store)
 routes.delete('/regioes/:servico_id', RegiaoController.delete)
-routes.use(AuthMiddleware)
 
 //UPLOAD
 
