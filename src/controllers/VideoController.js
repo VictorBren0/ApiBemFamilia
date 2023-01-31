@@ -25,7 +25,7 @@ module.exports = {
       offset: (page - 1) * 20,
       include: {
         association: 'avaliacoes',
-        attributes: ['nome']
+        attributes: ['login']
       },
     })
 
