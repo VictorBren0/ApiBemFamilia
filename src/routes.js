@@ -21,7 +21,7 @@ const routes = express.Router()
 routes.post('/auth', AuthController.login)
 routes.post('/cadastro', UsuarioController.store)
 
-routes.use(AuthMiddleware)
+
 
 //CATEGORIAS
 routes.get('/categorias', CategoriaController.list)
@@ -80,6 +80,7 @@ routes.get('/regioes', RegiaoController.list)
 routes.get('/regioes/:id', RegiaoController.index)
 routes.post('/regioes/:servico_id', RegiaoController.store)
 routes.delete('/regioes/:servico_id', RegiaoController.delete)
+routes.use(AuthMiddleware)
 
 //UPLOAD
 
