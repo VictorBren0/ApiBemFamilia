@@ -4,7 +4,7 @@ class Avaliacao extends Model {
   static init(sequelize) {
     super.init(
       {
-        pontuacao: DataTypes.DECIMAL(5, 2),
+        pontuacao: DataTypes.DECIMAL(5, 1),
         comentario: DataTypes.STRING,
       },
       {
