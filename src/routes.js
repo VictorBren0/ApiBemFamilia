@@ -21,6 +21,8 @@ const routes = express.Router()
 routes.post('/auth', AuthController.login)
 routes.post('/cadastro', UsuarioController.store)
 
+routes.use(AuthMiddleware)
+
 //CATEGORIAS
 routes.get('/categorias', CategoriaController.list)
 routes.get('/categorias/:categoria_id', CategoriaController.index)
@@ -37,7 +39,7 @@ routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoC
 
 
 
-//routes.use(AuthMiddleware)
+
 
 //USUARIO
 routes.get('/usuarios', UsuarioController.index)
