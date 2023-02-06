@@ -29,14 +29,10 @@ routes.get('/categorias/:categoria_id', CategoriaController.index)
 routes.get('/videos/:id', VideoController.index)
 routes.get('/videos', VideoController.list)
 
-//USUARIO
-routes.get('/usuarios', UsuarioController.index)
-routes.get('/usuarios/:id', UsuarioController.show)
 
-//FAVORITOS
-routes.get('/favoritos', FavoritoController.list)
 
 routes.use(AuthMiddleware)
+
 
 
 
@@ -57,6 +53,8 @@ routes.put('/categorias/:categoria_id/videos/:id', upload.single('file'), VideoC
 
 //USUARIO
 routes.put('/usuarios', UsuarioController.update)
+routes.get('/usuarios', UsuarioController.index)
+routes.get('/usuarios/:id', UsuarioController.show)
 
 //PODCASTS
 routes.get('/podcasts/:id', PodcastController.index)
@@ -68,6 +66,7 @@ routes.put('/categorias/:categoria_id/podcasts/:id', PodcastController.update)
 //FAVORITOS
 routes.post('/favoritos/:video_id', FavoritoController.store)
 routes.delete('/favoritos/:video_id', FavoritoController.delete)
+routes.get('/favoritos', FavoritoController.list)
 
 //AVALIAÇÃO
 routes.post('/avaliacoes/:video_id', AvaliacaoController.store)

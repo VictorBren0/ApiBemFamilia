@@ -2,7 +2,6 @@ const Video = require('../models/Video')
 
 module.exports = {
   async list(req, res) {
-    const { page = 1 } = req.query
     const favoritos = await Video.findAll({
       include: [
         {
@@ -13,10 +12,7 @@ module.exports = {
           },
         },
       ],
-      limit: 20,
-      offset: (page - 1) * 20,
     })
-
     return res.json(favoritos)
   },
 
