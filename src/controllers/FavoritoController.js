@@ -12,6 +12,10 @@ module.exports = {
           },
         },
       ],
+      include: {
+        association: 'avaliacoes',
+        attributes: ['nome']
+      },
     })
     return res.json(favoritos)
   },
