@@ -9,11 +9,11 @@ module.exports = {
     const usuario = await Usuario.findOne({ where: { login } })
 
     if (!usuario) {
-      return res.status(401).json({ error: 'Usuário não encontrado' })
+      return res.status(401).json({ error: 'Usuário não encontrado!' })
     }
 
     if (!(await usuario.checkPassword(senha))) {
-      return res.status(401).json({ error: 'Senha invalida' })
+      return res.status(401).json({ error: 'Senha invalida!' })
     }
 
     const { id, nome, email } = usuario
