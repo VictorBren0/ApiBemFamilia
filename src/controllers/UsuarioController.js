@@ -26,10 +26,10 @@ module.exports = {
   async store(req, res) {
     const schema = Yup.object()
       .shape({
-        nome: Yup.string().required('Nome é obrigatório').min(3, 'O nome deve ter no mínimo 3 caracteres').max(20, 'O nome deve ter no máximo 70 caracteres'),
-        email: Yup.string().email('E-mail inválido').required('E-mail é obrigatório').max(120, 'O email deve ter no máximo 120 caracteres'),
-        login: Yup.string().required('Login é obrigatório').min(6, 'O login deve ter no mínimo 6 caracteres').max(20, 'O login deve ter no máximo 20 caracteres'),
-        senha: Yup.string().required('Senha é obrigatória').min(8, 'A senha deve ter no mínimo 8 caracteres').max(30, 'A senha deve ter no máximo 30 caracteres'),
+        nome: Yup.string().required('Nome é obrigatório!').min(3, 'O nome deve ter no mínimo 3 caracteres!').max(20, 'O nome deve ter no máximo 20 caracteres!'),
+        email: Yup.string().email('E-mail inválido!').required('E-mail é obrigatório!').max(120, 'O email deve ter no máximo 120 caracteres!'),
+        login: Yup.string().required('Login é obrigatório!').min(6, 'O login deve ter no mínimo 6 caracteres!').max(20, 'O login deve ter no máximo 20 caracteres!'),
+        senha: Yup.string().required('Senha é obrigatória!').min(8, 'A senha deve ter no mínimo 8 caracteres!').max(30, 'A senha deve ter no máximo 30 caracteres!'),
       })
       .noUnknown()
 
@@ -46,7 +46,7 @@ module.exports = {
       })
 
       if (emailExists || loginExists) {
-        return res.status(409).json({ error: 'Usuario já cadastrado' })
+        return res.status(409).json({ error: 'Usuario já cadastrado!' })
       }
       const validFields = await schema.validate(req.body, {
         abortEarly: false,
@@ -66,8 +66,8 @@ module.exports = {
   async update(req, res) {
     const schema = Yup.object()
       .shape({
-        nome: Yup.string().min(3, 'O nome deve ter no mínimo 3 caracteres').max(20, 'O nome deve ter no máximo 70 caracteres'),
-        senha: Yup.string().min(8, 'A senha deve ter no mínimo 8 caracteres').max(30, 'A senha deve ter no máximo 30 caracteres'),
+        nome: Yup.string().min(3, 'O nome deve ter no mínimo 3 caracteres!').max(20, 'O nome deve ter no máximo 20 caracteres!'),
+        senha: Yup.string().min(8, 'A senha deve ter no mínimo 8 caracteres!').max(30, 'A senha deve ter no máximo 30 caracteres!'),
         senha_confirm: Yup.string().required().min(8),
       })
       .noUnknown()
@@ -76,7 +76,7 @@ module.exports = {
       const usuario = await Usuario.findByPk(req.usuarioID)
 
       if (!usuario) {
-        return res.status(400).json({ error: 'Usuário não encontrado' })
+        return res.status(400).json({ error: 'Usuário não encontrado!' })
       }
       if (senha !== senha_confirm) {
         return res.status(409).json({ error: 'As senhas não conhecidem!' })
